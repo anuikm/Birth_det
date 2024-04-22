@@ -1,0 +1,38 @@
+server:
+  port: 9113
+
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/assessment?currentSchema=test
+    username: postgres
+    password: 123
+  liquibase:
+    enabled: 'true'
+    drop-first: 'false'
+    change-log: classpath:/db/changelog/changelog-master.xml
+    parameters:
+      liquibase.changelogLockWaitTimeInMinutes: 20
+  jpa:
+    hibernate:
+      ddl-auto: none
+
+#  elasticsearch:
+#    uris: search-opensearch-dev-wgjyor5htauis45cbpxmq4t2za.ap-south-1.es.amazonaws.com:443
+#    username: admin
+##    password: "&Vbi3x0djmRDz7Et2mtQuBQ553ooW1fG"
+#
+#services:
+#  mdms:
+#    url : https://dev.api.ksmart.live/egov-mdms-service
+#    search-endpoint: "/egov-mdms-service/v1/_search"
+
+#aws:
+#  service-bucket: ksm-cr-birth-services-dev
+#  registry-bucket: ksm-cr-birth-services-registry-dev
+#  region: ap-south-1
+
+
+    
+    
+       

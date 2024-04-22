@@ -1,0 +1,55 @@
+management:
+  endpoints:
+    web:
+      base-path: /
+
+server:
+  servlet:
+    context-path: /demo-service
+  port: 8080
+
+app:
+  timezone: UTC
+
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: ${POSTGRES_URL}
+    username: ${POSTGRES_USER}
+    password: ${POSTGRES_PASSWORD}
+  liquibase:
+    enabled: 'true'
+    drop-first: 'true'
+    change-log: classpath:/db/changelog/changelog-master.xml
+  jpa:
+    properties:
+      org:
+        hibernate:
+          envers:
+            do_not_audit_optimistic_locking_field: false
+
+  elasticsearch:
+    uris: ${ES_URL}
+    username: ${ES_USERNAME}
+    password: ${ES_PASSWORD}
+
+services:
+  mdms:
+    tenant:
+      id: kl
+    url: ${MDMS_SERVICE_HOST}
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic
+
+
+aws:
+  service-bucket: ${SERVICE_BUCKET}
+  registry-bucket: ${REGISTRY_BUCKET}
+  service-role: ${SERVICE_ROLE}
+  region: ${AWS_REGION}
